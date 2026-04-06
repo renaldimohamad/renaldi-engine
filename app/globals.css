@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold;
+  }
+
+  h1 {
+    @apply text-6xl leading-tight;
+  }
+
+  h2 {
+    @apply text-4xl leading-snug;
+  }
+
+  h3 {
+    @apply text-2xl leading-snug;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: theme("colors.primary-light");
+  color: theme("colors.text-light");
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  letter-spacing: -0.3px;
+}
+
+html.dark body {
+  background-color: theme("colors.primary-dark");
+  color: theme("colors.text-dark");
+}
+
+::selection {
+  background-color: theme("colors.accent");
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme("colors.secondary-light");
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: theme("colors.secondary-dark");
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme("colors.accent");
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.accent");
+  opacity: 0.8;
+}
