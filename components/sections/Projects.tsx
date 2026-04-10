@@ -119,7 +119,6 @@ export default function Projects() {
         {projects.map((project, idx) => (
           <motion.div key={project.id} variants={staggerItem} className="group">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Content */}
               <motion.div
                 className={`order-2 md:order-${idx % 2 === 0 ? "1" : "2"}`}
                 variants={fadeInUp}>
