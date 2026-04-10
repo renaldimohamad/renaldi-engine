@@ -40,7 +40,7 @@ export default function Projects() {
         "D3.js",
       ],
       image: "/images/korlantas.jpg",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-info to-info-light",
     },
     {
       id: 2,
@@ -70,7 +70,7 @@ export default function Projects() {
         "Mapbox",
       ],
       image: "/images/cipta-karya.jpg",
-      color: "from-green-500 to-teal-500",
+      color: "from-success to-success-light",
     },
     {
       id: 3,
@@ -101,7 +101,7 @@ export default function Projects() {
         "Machine Learning",
       ],
       image: "/images/qola.jpg",
-      color: "from-purple-500 to-pink-500",
+      color: "from-highlight to-highlight-light",
     },
   ];
 
@@ -144,9 +144,8 @@ export default function Projects() {
                     variants={staggerItem}
                     whileHover={{
                       y: -2,
-                      boxShadow: "0 10px 25px rgba(5, 150, 105, 0.1)",
                     }}
-                    className="p-4 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 transition-all duration-200">
+                    className="p-4 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-xl hover:shadow-success/10 transition-all duration-200">
                     <h4 className="font-semibold text-accent mb-2">Problem</h4>
                     <p className="text-text-light/70 dark:text-text-dark/70 text-sm leading-relaxed">
                       {project.problem}
@@ -156,9 +155,8 @@ export default function Projects() {
                     variants={staggerItem}
                     whileHover={{
                       y: -2,
-                      boxShadow: "0 10px 25px rgba(5, 150, 105, 0.1)",
                     }}
-                    className="p-4 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 transition-all duration-200">
+                    className="p-4 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-xl hover:shadow-success/10 transition-all duration-200">
                     <h4 className="font-semibold text-accent mb-2">Solution</h4>
                     <p className="text-text-light/70 dark:text-text-dark/70 text-sm leading-relaxed">
                       {project.solution}
