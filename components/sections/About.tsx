@@ -97,9 +97,8 @@ export default function About() {
               variants={staggerItem}
               whileHover={{
                 y: -4,
-                boxShadow: "0 10px 30px rgba(5, 150, 105, 0.1)",
               }}
-              className="p-6 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 transition-all duration-200">
+              className="p-6 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-xl hover:shadow-success/10 transition-all duration-200">
               <h3 className="font-semibold font-heading text-lg mb-2 text-accent">
                 {item.title}
               </h3>
