@@ -2,77 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 @layer base {
+  body {
+    @apply bg-primary-light text-text-light dark:bg-primary-dark dark:text-text-dark;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+    letter-spacing: -0.3px;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply font-heading font-semibold;
+    @apply font-heading font-semibold text-text-light dark:text-text-dark;
   }
-
-  h1 {
-    @apply text-6xl leading-tight;
-  }
-
-  h2 {
-    @apply text-4xl leading-snug;
-  }
-
-  h3 {
-    @apply text-2xl leading-snug;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: theme("colors.primary-light");
-  color: theme("colors.text-light");
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-  letter-spacing: -0.3px;
-}
-
-html.dark body {
-  background-color: theme("colors.primary-dark");
-  color: theme("colors.text-dark");
 }
 
 ::selection {
-  background-color: theme("colors.accent");
-  color: white;
+  @apply bg-accent text-primary-light dark:text-primary-dark;
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: theme("colors.secondary-light");
-}
-
-html.dark ::-webkit-scrollbar-track {
-  background: theme("colors.secondary-dark");
+  @apply bg-secondary-light dark:bg-secondary-dark;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme("colors.accent");
-  border-radius: 5px;
+  @apply bg-tertiary-light dark:bg-tertiary-dark rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme("colors.accent");
-  opacity: 0.8;
+  @apply bg-text-light dark:bg-text-dark;
+}
+
+.bg-custom-primary {
+  @apply bg-primary-light dark:bg-primary-dark;
+}
+.text-custom-main {
+  @apply text-text-light dark:text-text-dark;
+}
+.border-custom {
+  @apply border-tertiary-light dark:border-tertiary-dark;
 }

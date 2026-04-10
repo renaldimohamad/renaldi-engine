@@ -9,17 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "primary-light": "#FAFBFC",
-        "primary-dark": "#0A0E14",
-        "secondary-light": "#F5F6F8",
-        "secondary-dark": "#151B25",
-        "tertiary-light": "#E8ECEF",
-        "tertiary-dark": "#252E3C",
-        "text-light": "#0F1419",
-        "text-dark": "#ECEFF3",
-        accent: "#059669", // Emerald green for premium feel
-        "accent-light": "#10B981",
-        "accent-dark": "#047857",
+        // Mode Light: Pure White & Soft Gray (Zinc)
+        "primary-light": "#FFFFFF",
+        "secondary-light": "#F4F4F5", // zinc-100
+        "tertiary-light": "#E4E4E7", // zinc-200
+        "text-light": "#09090B", // zinc-950
+
+        // Mode Dark: Deep Charcoal & True Black
+        "primary-dark": "#09090B", // zinc-950
+        "secondary-dark": "#18181B", // zinc-900
+        "tertiary-dark": "#27272A", // zinc-800
+        "text-dark": "#FAFAFA", // zinc-50
+
+        // Accent: Monochrome (White on Dark, Black on Light)
+        accent: "#FAFAFA",
+        "accent-light": "#D4D4D8", // zinc-300
+        "accent-dark": "#71717A", // zinc-500
+
+        // Semantic Status & Highlight Colors
+        success: "#22C55E",
+        "success-light": "#14B8A6",
+        info: "#3B82F6",
+        "info-light": "#06B6D4",
+        warning: "#EAB308",
+        highlight: "#A855F7",
+        "highlight-light": "#EC4899",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
@@ -45,8 +59,9 @@ const config: Config = {
         lg: "0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08)",
         xl: "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08)",
         "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.2)",
-        glow: "0 0 20px rgba(5, 150, 105, 0.3)",
-        "glow-lg": "0 0 30px rgba(5, 150, 105, 0.4)",
+        // Glow diubah dari hijau ke putih transparan untuk vibe minimalis
+        glow: "0 0 20px rgba(255, 255, 255, 0.1)",
+        "glow-lg": "0 0 30px rgba(255, 255, 255, 0.15)",
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out",
@@ -78,10 +93,11 @@ const config: Config = {
         },
       },
       backgroundImage: {
+        // Gradient diubah dari nuansa ijo ke nuansa Monochrome Gray
         "gradient-subtle":
-          "linear-gradient(135deg, rgba(5, 150, 105, 0.05) 0%, rgba(5, 150, 105, 0.02) 100%)",
+          "linear-gradient(135deg, rgba(24, 24, 27, 0.03) 0%, rgba(24, 24, 27, 0.01) 100%)",
         "gradient-subtle-dark":
-          "linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%)",
+          "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)",
       },
     },
   },
