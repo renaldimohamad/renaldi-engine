@@ -109,9 +109,8 @@ export default function Skills() {
             variants={staggerItem}
             whileHover={{
               y: -8,
-              boxShadow: "0 20px 40px rgba(5, 150, 105, 0.12)",
             }}
-            className="p-6 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 transition-all duration-300 group">
+            className="p-6 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-2xl hover:shadow-success/10 transition-all duration-300 group">
             {/* Header */}
             <motion.div
               className="flex items-center space-x-3 mb-6"
@@ -132,9 +131,8 @@ export default function Skills() {
                   variants={staggerItem}
                   whileHover={{
                     x: 4,
-                    backgroundColor: "rgba(5, 150, 105, 0.08)",
                   }}
-                  className="flex items-center space-x-2 p-2 rounded transition-colors duration-200">
+                  className="flex items-center space-x-2 p-2 rounded hover:bg-success/10 transition-colors duration-200">
                   <motion.span
                     className="w-2 h-2 bg-accent rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}
@@ -188,10 +186,10 @@ export default function Skills() {
                 <span
                   className={`text-xs font-semibold ${
                     prof.category === "Expert"
-                      ? "text-green-500"
+                      ? "text-success"
                       : prof.category === "Advanced"
-                        ? "text-blue-500"
-                        : "text-yellow-500"
+                        ? "text-info"
+                        : "text-warning"
                   }`}>
                   {prof.category === "Expert"
                     ? "5+ years equivalent"
