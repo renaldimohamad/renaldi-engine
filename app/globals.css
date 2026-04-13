@@ -3,51 +3,88 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 226.7 70.7% 40.2%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 226.7 70.7% 65%;
+    --primary-foreground: 226.7 70.7% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
   body {
-    @apply bg-primary-light text-text-light dark:bg-primary-dark dark:text-text-dark;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease,
-      border-color 0.3s ease;
-    letter-spacing: -0.3px;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading font-semibold text-text-light dark:text-text-dark;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
   }
 }
 
-::selection {
-  @apply bg-accent text-primary-light dark:text-primary-dark;
+.glass {
+  @apply bg-background/60 backdrop-blur-md border border-white/10 dark:border-white/5;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-secondary-light dark:bg-secondary-dark;
+.section-padding {
+  @apply py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-tertiary-light dark:bg-tertiary-dark rounded-full;
+.perspective-1000 {
+  perspective: 1000px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-text-light dark:bg-text-dark;
+@keyframes flutter {
+  0% { transform: scale(1) rotate(var(--rotation)); opacity: 0.8; }
+  100% { transform: scale(0.6) rotate(calc(var(--rotation) + 30deg)); opacity: 0.4; }
 }
 
-.bg-custom-primary {
-  @apply bg-primary-light dark:bg-primary-dark;
+.spark-flutter {
+  animation: flutter 2s ease-in-out infinite alternate;
 }
-.text-custom-main {
-  @apply text-text-light dark:text-text-dark;
-}
-.border-custom {
-  @apply border-tertiary-light dark:border-tertiary-dark;
-}
+

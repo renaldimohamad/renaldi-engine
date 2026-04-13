@@ -2,139 +2,105 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
-import { staggerContainer, staggerItem, cardHover } from "@/lib/animations";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, Building2, Calendar, CheckCircle2 } from "lucide-react";
 
 export default function Experience() {
   const experiences = [
     {
-      year: "2025 - Present",
       period: "Feb 2025 - Present",
-      role: "Full Stack Developer",
+      role: "Fullstack Engineer",
       company: "PT. Eka Abhipraya Semesta",
-      description:
-        "Building production-grade applications including government systems for social media monitoring and infrastructure dashboards.",
+      description: "Leading the development of mission-critical systems for government and enterprise clients. Focused on architecting scalable microservices and data-intensive frontend applications.",
       achievements: [
-        "Architected and deployed 3 major production systems (Korlantas Polri, Cipta Karya, QOLA)",
-        "Built frontend using React.js & Vue.js with advanced UI patterns",
-        "Developed backend APIs using NestJS with GraphQL & REST endpoints",
-        "Implemented state management with TanStack Query, Zustand, and Pinia",
-        "Optimized database queries using Prisma ORM with MySQL",
-        "Focus on performance optimization and data-intensive applications",
+        "Architected and deployed 3 major production systems: Korlantas Polri (Social Media Monitoring), Cipta Karya (Infrastructure Dashboard), and QOLA (Enterprise Listening Platform).",
+        "Optimized frontend performance by 40% using advanced patterns in React and Vue.js.",
+        "Engineered scalable backend architectures using NestJS, GraphQL, and Prisma.",
+        "Implemented robust state management systems managing complex real-time data streams."
       ],
-      technologies: [
-        "React",
-        "Vue.js",
-        "NestJS",
-        "GraphQL",
-        "REST API",
-        "TypeScript",
-        "Prisma",
-        "MySQL",
-      ],
+      tech: ["React", "Vue", "NestJS", "GraphQL", "Prisma", "PostgreSQL", "Redis"]
     },
     {
-      year: "2024",
       period: "Jun 2024 - Oct 2024",
-      role: "Full Stack Developer Intern",
+      role: "Fullstack Developer Intern",
       company: "PT. Dumbways Teknologi Indonesia",
-      description:
-        "Developed fullstack web applications using modern JavaScript/Node.js ecosystem.",
+      description: "Contributed to the development of fullstack web applications within a fast-paced agile environment.",
       achievements: [
-        "Built multiple fullstack applications using React and Node.js",
-        "Integrated REST APIs across multiple frontend and backend systems",
-        "Collaborated on both frontend and backend feature development",
-        "Learned best practices in development workflow and code organization",
+        "Collaborated on building end-to-end features for multiple client projects.",
+        "Streamlined API integrations between React frontends and Node.js backends.",
+        "Participated in rigorous code reviews and architecture planning sessions."
       ],
-      technologies: [
-        "React",
-        "Node.js",
-        "Express",
-        "REST API",
-        "JavaScript",
-        "MongoDB",
-      ],
-    },
+      tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]
+    }
   ];
 
   return (
-    <SectionWrapper
-      id="experience"
-      title="Experience"
-      subtitle="My journey building production systems">
-      <motion.div
-        className="space-y-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}>
-        {experiences.map((exp, idx) => (
-          <motion.div
-            key={idx}
-            variants={staggerItem}
-            whileHover={{ y: -8 }}
-            className="group p-8 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-lg transition-all duration-300">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-              <div>
-                <h3 className="text-2xl font-heading font-bold text-accent">
-                  {exp.role}
-                </h3>
-                <p className="text-text-light/70 dark:text-text-dark/70 font-medium mt-1">
-                  {exp.company}
-                </p>
+    <SectionWrapper 
+      id="experience" 
+      title="Experience" 
+      subtitle="Career progression and professional impact."
+    >
+      <div className="relative space-y-12">
+        {/* Timeline Line */}
+        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2 hidden md:block" />
+
+        {experiences.map((exp, index) => (
+          <motion.div 
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+          >
+            {/* Timeline Dot */}
+            <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background -translate-x-1/2 top-0 hidden md:block" />
+
+            {/* Date Column */}
+            <div className="md:w-1/2 flex flex-col md:items-end md:text-right gap-1 px-4">
+              <div className="flex items-center gap-2 text-primary md:justify-end">
+                <Calendar className="w-4 h-4" />
+                <span className="text-sm font-bold tracking-wider uppercase">{exp.period}</span>
               </div>
-              <div className="mt-4 md:mt-0 text-right">
-                <p className="text-lg font-heading font-semibold text-text-light dark:text-text-dark">
-                  {exp.year}
-                </p>
-                <p className="text-sm text-text-light/60 dark:text-text-dark/60">
-                  {exp.period}
-                </p>
+              <div className="flex items-center gap-2 text-muted-foreground md:justify-end">
+                <Building2 className="w-4 h-4" />
+                <span className="font-medium">{exp.company}</span>
               </div>
             </div>
 
-            {/* Description */}
-            <p className="text-text-light/80 dark:text-text-dark/80 mb-6 leading-relaxed">
-              {exp.description}
-            </p>
+            {/* Content Column */}
+            <div className="md:w-1/2">
+              <div className="p-6 md:p-8 rounded-3xl border bg-card hover:shadow-xl transition-all group">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                    <Briefcase className="w-6 h-6" />
+                  </div>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-3">{exp.role}</h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {exp.description}
+                </p>
 
-            {/* Achievements */}
-            <div className="mb-6">
-              <h4 className="font-heading font-semibold mb-3 text-text-light dark:text-text-dark">
-                Key Achievements
-              </h4>
-              <ul className="space-y-2">
-                {exp.achievements.map((achievement, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start space-x-3 text-text-light/70 dark:text-text-dark/70 text-sm leading-relaxed">
-                    <span className="text-accent font-bold mt-1 flex-shrink-0">
-                      ✓
-                    </span>
-                    <span>{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <div className="space-y-3 mb-8">
+                  {exp.achievements.map((item, i) => (
+                    <div key={i} className="flex gap-3 text-sm leading-relaxed text-foreground/80">
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-1" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
 
-            {/* Technologies */}
-            <div>
-              <h4 className="font-heading font-semibold mb-3 text-text-light dark:text-text-dark">
-                Technologies
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {exp.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 text-xs font-medium rounded-full bg-accent/10 dark:bg-accent/15 text-accent border border-accent/30 hover:border-accent hover:bg-accent/20 dark:hover:bg-accent/25 transition-all duration-200">
-                    {tech}
-                  </span>
-                ))}
+                <div className="flex flex-wrap gap-2">
+                  {exp.tech.map((t) => (
+                    <Badge key={t} variant="secondary">{t}</Badge>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </SectionWrapper>
   );
 }

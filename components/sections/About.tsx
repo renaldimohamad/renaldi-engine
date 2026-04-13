@@ -1,114 +1,87 @@
 "use client";
 
-import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
-import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
+import { Database, Layout, Server, Sparkles } from "lucide-react";
 
 export default function About() {
+  const focuses = [
+    {
+      icon: <Layout className="w-5 h-5" />,
+      title: "Frontend Excellence",
+      description: "Building immersive interfaces using React, Vue, and Next.js with deep attention to UX and performance."
+    },
+    {
+      icon: <Server className="w-5 h-5" />,
+      title: "Robust Backends",
+      description: "Architecting scalable server-side systems with NestJS, Node.js, and modern API standards."
+    },
+    {
+      icon: <Database className="w-5 h-5" />,
+      title: "Data Operations",
+      description: "Managing complex data-intensive systems, processing millions of records for government-level software."
+    },
+    {
+      icon: <Sparkles className="w-5 h-5" />,
+      title: "Systems Thinking",
+      description: "Bridging the gap between business logic and technical implementation for production-ready products."
+    }
+  ];
+
   return (
-    <SectionWrapper
-      id="about"
-      title="About"
-      subtitle="Who I am and what drives me">
-      <motion.div
-        className="grid md:grid-cols-2 gap-12 items-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}>
-        {/* Left: Description */}
-        <motion.div variants={staggerItem} className="space-y-6">
-          <p className="text-lg font-sans text-text-light/80 dark:text-text-dark/80 leading-relaxed">
-            I&apos;m a full-stack developer with ~2 years of hands-on experience
-            building production-grade applications for government systems and
-            enterprise platforms. My focus is on creating scalable,
-            data-intensive systems that are performant, maintainable, and
-            user-centric.
-          </p>
+    <SectionWrapper 
+      id="about" 
+      title="About Me" 
+      subtitle="Engineering digital solutions with precision and expertise."
+    >
+      <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <p className="text-xl text-foreground font-medium">
+              I am a Fullstack Engineer dedicated to building high-performance, 
+              scalable software systems.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              With ~2 years of experience focusing on production-grade applications, 
+              I have developed a deep expertise in navigating complex technical 
+              landscapes, specifically within large-scale government systems 
+              and enterprise infrastructure.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              My journey involves architecting systems that process massive data streams 
+              daily, ensuring reliability, speed, and clean code architecture. I thrive at 
+              the intersection of backend efficiency and frontend elegance.
+            </p>
+          </div>
 
-          <p className="text-lg font-sans text-text-light/80 dark:text-text-dark/80 leading-relaxed">
-            Currently at PT. Eka Abhipraya Semesta, I&apos;ve architected and
-            built mission-critical systems like Korlantas Polri (social media
-            monitoring for Indonesian police), Cipta Karya (infrastructure
-            dashboard for Ministry of Public Works), and QOLA (enterprise social
-            listening platform). These experiences have deeply shaped my
-            approach to system design, API architecture, and performance
-            optimization.
-          </p>
+          <div className="grid grid-cols-2 gap-8 pt-4">
+            <div>
+              <div className="text-4xl font-bold mb-1">02+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-1">10+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">Major Projects</div>
+            </div>
+          </div>
+        </div>
 
-          <p className="text-lg font-sans text-text-light/80 dark:text-text-dark/80 leading-relaxed">
-            I specialize in building complex data-intensive applications using
-            React, Vue.js, NestJS, and modern database solutions. I&apos;m
-            passionate about clean architecture, mentoring junior developers,
-            and exploring the cutting edge of full-stack development.
-          </p>
-
-          {/* Stats */}
-          <motion.div
-            variants={staggerContainer}
-            className="grid grid-cols-3 gap-4 pt-8">
-            {[
-              { number: "~2", label: "Years Experience" },
-              { number: "3", label: "Major Systems" },
-              { number: "1M+", label: "Daily Requests" },
-            ].map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={staggerItem}
-                whileHover={{ y: -4 }}
-                className="text-center p-4 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 transition-all duration-200">
-                <p className="text-3xl font-heading font-bold text-accent">
-                  {stat.number}
-                </p>
-                <p className="text-sm text-text-light/70 dark:text-text-dark/70 mt-2">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Right: Key Points */}
-        <motion.div variants={staggerContainer} className="space-y-6">
-          {[
-            {
-              title: "Data-Intensive Systems",
-              description:
-                "Built systems processing millions of records daily with optimized queries and caching strategies.",
-            },
-            {
-              title: "Modern Frontend Stack",
-              description:
-                "Expert in React, Vue.js, and Next.js with strong focus on performance, state management, and UX.",
-            },
-            {
-              title: "Scalable Backend Architecture",
-              description:
-                "Designed REST APIs and GraphQL services using NestJS with Prisma ORM for MySQL & PostgreSQL.",
-            },
-            {
-              title: "System Integration & APIs",
-              description:
-                "Deep experience integrating multiple platforms, managing complex data pipelines, and API design.",
-            },
-          ].map((item) => (
-            <motion.div
-              key={item.title}
-              variants={staggerItem}
-              whileHover={{
-                y: -4,
-              }}
-              className="p-6 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-xl hover:shadow-success/10 transition-all duration-200">
-              <h3 className="font-semibold font-heading text-lg mb-2 text-accent">
-                {item.title}
-              </h3>
-              <p className="text-text-light/70 dark:text-text-dark/70 text-sm leading-relaxed">
-                {item.description}
+        <div className="grid sm:grid-cols-2 gap-4">
+          {focuses.map((focus, index) => (
+            <div 
+              key={index}
+              className="p-6 rounded-2xl border bg-card hover:bg-accent transition-colors group"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                {focus.icon}
+              </div>
+              <h3 className="font-bold mb-2">{focus.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {focus.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </SectionWrapper>
   );
 }

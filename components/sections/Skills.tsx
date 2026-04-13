@@ -1,210 +1,83 @@
 "use client";
 
-import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
-import { staggerContainer, staggerItem, cardHover } from "@/lib/animations";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Code2, 
+  Database, 
+  Layers, 
+  Layout, 
+  Server, 
+  Wrench 
+} from "lucide-react";
 
 export default function Skills() {
-  const skillCategories = [
+  const categories = [
     {
       title: "Frontend",
-      icon: "🎨",
-      skills: [
-        "React",
-        "Next.js",
-        "Vue.js",
-        "Nuxt.js",
-        "React Native",
-        "TypeScript",
-        "Tailwind CSS",
-        "Material UI",
-      ],
+      icon: <Layout className="w-5 h-5" />,
+      skills: ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS", "Framer Motion", "TanStack Query"]
     },
     {
       title: "Backend",
-      icon: "⚙️",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "NestJS",
-        "REST API",
-        "GraphQL",
-        "System Design",
-        "API Architecture",
-        "Microservices",
-      ],
+      icon: <Server className="w-5 h-5" />,
+      skills: ["Node.js", "NestJS", "Express", "GraphQL", "REST APIs", "Microservices"]
+    },
+    {
+      title: "Database",
+      icon: <Database className="w-5 h-5" />,
+      skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Prisma ORM", "TypeORM"]
     },
     {
       title: "State Management",
-      icon: "🔄",
-      skills: [
-        "TanStack Query",
-        "Zustand",
-        "Pinia",
-        "Redux",
-        "Context API",
-        "Async State",
-        "Data Synchronization",
-        "Caching",
-      ],
-    },
-    {
-      title: "Database & ORM",
-      icon: "🗄️",
-      skills: [
-        "MySQL",
-        "PostgreSQL",
-        "Prisma ORM",
-        "Query Optimization",
-        "Database Design",
-        "Data Modeling",
-        "Indexing Strategies",
-        "Migration Management",
-      ],
+      icon: <Layers className="w-5 h-5" />,
+      skills: ["Zustand", "Pinia", "Redux", "Context API", "Vuex"]
     },
     {
       title: "Tools & DevOps",
-      icon: "🚀",
-      skills: [
-        "Git",
-        "GitHub",
-        "Cloudinary",
-        "Figma",
-        "Docker",
-        "Linux",
-        "CI/CD",
-        "Performance Optimization",
-      ],
+      icon: <Wrench className="w-5 h-5" />,
+      skills: ["Git", "Docker", "CI/CD", "Linux", "Vercel", "Postman", "Figma"]
     },
     {
-      title: "Specializations",
-      icon: "⭐",
-      skills: [
-        "Data-Intensive Apps",
-        "System Architecture",
-        "Performance Optimization",
-        "Real-time Systems",
-        "WebSocket Integration",
-        "API Design",
-        "Code Review",
-        "Mentoring",
-      ],
-    },
+      title: "Specialties",
+      icon: <Code2 className="w-5 h-5" />,
+      skills: ["Data Monitoring", "System Design", "UI/UX Architecture", "Performance Optimization"]
+    }
   ];
 
   return (
-    <SectionWrapper
-      id="skills"
-      title="Skills"
-      subtitle="Technologies and expertise I bring to the table">
-      <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-        variants={staggerContainer}>
-        {skillCategories.map((category, idx) => (
-          <motion.div
-            key={category.title}
-            variants={staggerItem}
-            whileHover={{
-              y: -8,
-            }}
-            className="p-6 rounded-lg bg-gradient-subtle dark:bg-gradient-subtle-dark border border-tertiary-light dark:border-tertiary-dark hover:border-accent/50 hover:shadow-2xl hover:shadow-success/10 transition-all duration-300 group">
-            {/* Header */}
-            <motion.div
-              className="flex items-center space-x-3 mb-6"
-              whileHover={{ x: 4 }}>
-              <span className="text-4xl group-hover:scale-110 transition-transform">
-                {category.icon}
-              </span>
-              <h3 className="text-xl font-heading font-bold text-accent">
-                {category.title}
-              </h3>
-            </motion.div>
-
-            {/* Skills */}
-            <motion.div className="space-y-2" variants={staggerContainer}>
-              {category.skills.map((skill) => (
-                <motion.div
-                  key={skill}
-                  variants={staggerItem}
-                  whileHover={{
-                    x: 4,
-                  }}
-                  className="flex items-center space-x-2 p-2 rounded hover:bg-success/10 transition-colors duration-200">
-                  <motion.span
-                    className="w-2 h-2 bg-accent rounded-full"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 0.5,
-                    }}
-                  />
-                  <span className="text-text-light/80 dark:text-text-dark/80 text-sm leading-relaxed">
-                    {skill}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Proficiency Summary */}
-      <motion.div
-        className="mt-16 p-8 rounded-lg bg-secondary-light dark:bg-secondary-dark border border-tertiary-light dark:border-tertiary-dark"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}>
-        <h3 className="text-2xl font-bold mb-8 text-accent">
-          Proficiency Levels
-        </h3>
-        <motion.div className="space-y-6" variants={staggerContainer}>
-          {[
-            {
-              category: "Expert",
-              technologies:
-                "React, Next.js, Node.js, TypeScript, Prisma, MySQL",
-            },
-            {
-              category: "Advanced",
-              technologies: "GraphQL, NestJS, Vue.js, PostgreSQL, Docker",
-            },
-            {
-              category: "Intermediate",
-              technologies: "System Design, Performance Optimization, CI/CD",
-            },
-          ].map((prof) => (
-            <motion.div key={prof.category} variants={staggerItem}>
-              <div className="flex justify-between items-center mb-2">
-                <h4 className="font-semibold text-text-light dark:text-text-dark">
-                  {prof.category}
-                </h4>
-                <span
-                  className={`text-xs font-semibold ${
-                    prof.category === "Expert"
-                      ? "text-success"
-                      : prof.category === "Advanced"
-                        ? "text-info"
-                        : "text-warning"
-                  }`}>
-                  {prof.category === "Expert"
-                    ? "5+ years equivalent"
-                    : prof.category === "Advanced"
-                      ? "2-3 years"
-                      : "1-2 years"}
-                </span>
+    <SectionWrapper 
+      id="skills" 
+      title="Skills" 
+      subtitle="Comprehensive toolkit for developing modern applications."
+    >
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map((cat, i) => (
+          <div 
+            key={i}
+            className="p-8 rounded-3xl border bg-card hover:bg-accent hover:border-primary/20 transition-all group"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                {cat.icon}
               </div>
-              <p className="text-text-light/70 dark:text-text-dark/70 text-sm">
-                {prof.technologies}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+              <h3 className="text-xl font-bold">{cat.title}</h3>
+            </div>
+            
+            <div className="flex flex-wrap gap-2">
+              {cat.skills.map((skill) => (
+                <Badge 
+                  key={skill} 
+                  variant="secondary"
+                  className="bg-background border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all cursor-default py-1 px-3"
+                >
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </SectionWrapper>
   );
 }

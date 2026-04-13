@@ -7,13 +7,15 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div className="pt-16">
+    <div className="flex flex-col w-full">
       <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
+      <div className="relative z-10 bg-background">
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </div>
     </div>
   );
 }

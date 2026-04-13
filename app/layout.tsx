@@ -56,7 +56,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark transition-colors duration-300 font-sans">
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased overflow-x-hidden">
         <ThemeProvider>
           <Header />
           <main>{children}</main>
