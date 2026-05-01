@@ -107,7 +107,7 @@ export default function Header() {
                   key={item.label} 
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl font-bold tracking-tight hover:text-primary transition-colors"
+                  className="text-4xl font-bold tracking-tight hover:text-brand transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -115,7 +115,7 @@ export default function Header() {
               <Link 
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-4xl font-bold tracking-tight text-primary"
+                className="text-4xl font-bold tracking-tight text-brand"
               >
                 Contact
               </Link>
