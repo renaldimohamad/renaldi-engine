@@ -28,50 +28,50 @@ export default function About() {
   ];
 
   return (
-    <SectionWrapper 
-      id="about" 
-      title="About Me" 
+    <SectionWrapper
+      id="about"
+      title="About Me"
       subtitle="Engineering digital solutions with precision and expertise."
     >
       <div className="grid lg:grid-cols-2 gap-16 items-start">
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-xl text-foreground font-medium">
-              I am a Fullstack Engineer dedicated to building high-performance, 
+            <p className="text-lg text-foreground font-medium">
+              I am a Fullstack Engineer dedicated to building high-performance,
               scalable software systems.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              With ~2 years of experience focusing on production-grade applications, 
-              I have developed a deep expertise in navigating complex technical 
-              landscapes, specifically within large-scale government systems 
+              With ~2 years of experience focusing on production-grade applications,
+              I have developed a deep expertise in navigating complex technical
+              landscapes, specifically within large-scale government systems
               and enterprise infrastructure.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              My journey involves architecting systems that process massive data streams 
-              daily, ensuring reliability, speed, and clean code architecture. I thrive at 
+              My journey involves architecting systems that process massive data streams
+              daily, ensuring reliability, speed, and clean code architecture. I thrive at
               the intersection of backend efficiency and frontend elegance.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8 pt-4">
             <div>
-              <div className="text-4xl font-bold mb-1">02+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">Years Experience</div>
+              <div className="text-3xl font-bold mb-1">02+</div>
+              <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">10+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">Major Projects</div>
+              <div className="text-3xl font-bold mb-1">10+</div>
+              <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Major Projects</div>
             </div>
           </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
           {focuses.map((focus, index) => (
-            <div 
+            <div
               key={index}
-              className="p-6 rounded-2xl border bg-card hover:bg-accent transition-colors group"
+              className="p-6 rounded-2xl border bg-card hover:bg-card/80 hover:border-brand/30 hover:shadow-[0_0_20px_hsl(var(--brand)/0.05)] transition-all group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center mb-4 text-brand group-hover:bg-brand group-hover:text-brand-foreground transition-colors">
                 {focus.icon}
               </div>
               <h3 className="font-bold mb-2">{focus.title}</h3>
