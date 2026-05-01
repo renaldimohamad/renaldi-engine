@@ -57,7 +57,7 @@ export async function POST(req: Request) {
     const ownerEmail = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>', // Update this after verifying domain
       to: 'renaldimohamad77@gmail.com',
-      reply_to: email,
+      replyTo: email,
       subject: `New Message from ${name} (Portfolio)`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
