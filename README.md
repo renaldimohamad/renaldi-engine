@@ -4,7 +4,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://renaldi-mohamad.vercel.app">Live Demo</a>
+    <a href="https://app.renaldi.fun/">Live Demo</a>
     <span> | </span>
     <a href="#-tech-stack">Tech Stack</a>
     <span> | </span>
