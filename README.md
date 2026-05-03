@@ -1,6 +1,4 @@
-# 🚀 Modern Senior-Level Portfolio
-
-![Portfolio Banner](public/images/banner.png)
+# 🚀 Modern Portfolio
 
 <div align="center">
   <h3>
