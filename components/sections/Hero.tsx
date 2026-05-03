@@ -113,7 +113,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h1 className="text-[2.75rem] sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[1] md:leading-[0.9] mb-8 font-heading">
+            <h1 className="text-[2.25rem] sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[1.1] md:leading-[0.9] mb-6 md:mb-8 font-heading">
               <span className="relative inline-block text-gradient-premium">
                 Architecting
                 <div className="absolute -inset-4 bg-brand/20 blur-3xl rounded-full -z-10 opacity-50" />
@@ -122,7 +122,7 @@ export default function Hero() {
               <span className="text-muted-foreground/50 italic">Digital Scale.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground/80 max-w-xl leading-relaxed mx-auto lg:mx-0 font-medium">
+            <p className="text-base md:text-xl text-muted-foreground/80 max-w-xl leading-relaxed mx-auto lg:mx-0 font-medium">
               Renaldi Mohamad is a <span className="text-foreground">Fullstack Engineer</span> dedicated to building
               high-performance, production-ready software with a focus on
               enterprise systems and scalable data architecture.

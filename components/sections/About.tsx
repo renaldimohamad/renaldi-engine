@@ -36,17 +36,17 @@ export default function About() {
       <div className="grid lg:grid-cols-2 gap-16 items-start">
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-lg text-foreground font-medium">
+            <p className="text-base md:text-lg text-foreground font-medium">
               I am a Fullstack Engineer dedicated to building high-performance,
               scalable software systems.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-sm md:text-muted-foreground leading-relaxed">
               With ~2 years of experience focusing on production-grade applications,
               I have developed a deep expertise in navigating complex technical
               landscapes, specifically within large-scale government systems
               and enterprise infrastructure.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-sm md:text-muted-foreground leading-relaxed">
               My journey involves architecting systems that process massive data streams
               daily, ensuring reliability, speed, and clean code architecture. I thrive at
               the intersection of backend efficiency and frontend elegance.
@@ -55,12 +55,12 @@ export default function About() {
 
           <div className="grid grid-cols-2 gap-8 pt-4">
             <div>
-              <div className="text-3xl font-bold mb-1">02+</div>
-              <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Years Experience</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">02+</div>
+              <div className="text-[9px] md:text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Years Experience</div>
             </div>
             <div>
-              <div className="text-3xl font-bold mb-1">10+</div>
-              <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Major Projects</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">10+</div>
+              <div className="text-[9px] md:text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Major Projects</div>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function About() {
               <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center mb-4 text-brand group-hover:bg-brand group-hover:text-brand-foreground transition-colors">
                 {focus.icon}
               </div>
-              <h3 className="font-bold mb-2">{focus.title}</h3>
+              <h3 className="text-base md:font-bold mb-2 font-bold">{focus.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {focus.description}
               </p>

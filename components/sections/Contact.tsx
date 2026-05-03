@@ -63,8 +63,8 @@ export default function Contact() {
       <div className="grid lg:grid-cols-2 gap-16">
         <div className="space-y-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">Get in touch</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <h3 className="text-xl md:text-2xl font-bold mb-4">Get in touch</h3>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
               I&apos;m currently open to new opportunities and collaborations.
               Whether you have a specific project in mind or just want to chat
               about tech, feel free to reach out.
@@ -82,8 +82,8 @@ export default function Contact() {
                   {social.icon}
                 </div>
                 <div>
-                  <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground opacity-50">{social.label}</div>
-                  <div className="font-medium">{social.value}</div>
+                  <div className="text-[10px] md:text-sm font-bold uppercase tracking-wider text-muted-foreground opacity-50">{social.label}</div>
+                  <div className="text-sm md:text-base font-medium">{social.value}</div>
                 </div>
               </Link>
             ))}

@@ -55,13 +55,13 @@ export default function Skills() {
         {categories.map((cat, i) => (
           <div
             key={i}
-            className="p-8 rounded-3xl border bg-card hover:bg-card/60 hover:border-brand/30 hover:shadow-[0_0_30px_hsl(var(--brand)/0.1)] transition-all group cursor-pointer"
+            className="p-6 md:p-8 rounded-2xl md:rounded-3xl border bg-card hover:bg-card/60 hover:border-brand/30 hover:shadow-[0_0_30px_hsl(var(--brand)/0.1)] transition-all group cursor-pointer"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-brand-foreground transition-colors">
                 {cat.icon}
               </div>
-              <h3 className="text-lg font-bold">{cat.title}</h3>
+              <h3 className="text-base md:text-lg font-bold">{cat.title}</h3>
             </div>
 
             <div className="flex flex-wrap gap-2">

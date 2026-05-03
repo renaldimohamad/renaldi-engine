@@ -40,15 +40,15 @@ export default function ProjectCard({ project }: { project: ProjectCardProps }) 
             rel="noopener noreferrer"
             className="inline-block"
           >
-            <h3 className="text-2xl md:text-4xl font-black tracking-tighter group-hover:text-brand transition-colors duration-500">{project.title}</h3>
+            <h3 className="text-xl sm:text-2xl md:text-4xl font-black tracking-tighter group-hover:text-brand transition-colors duration-500">{project.title}</h3>
           </Link>
           <div className="flex items-center gap-3">
             <div className="h-px w-8 bg-brand/50" />
-            <p className="text-base md:text-lg font-semibold text-brand/80 uppercase tracking-widest">{project.subtitle}</p>
+            <p className="text-sm md:text-lg font-semibold text-brand/80 uppercase tracking-widest">{project.subtitle}</p>
           </div>
         </div>
 
-        <p className="text-muted-foreground/80 text-base leading-relaxed max-w-xl">
+        <p className="text-muted-foreground/80 text-sm md:text-base leading-relaxed max-w-xl">
           {project.description}
         </p>
 

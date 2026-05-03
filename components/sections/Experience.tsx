@@ -60,11 +60,11 @@ export default function Experience() {
             <div className="md:w-1/2 flex flex-col md:items-end md:text-right gap-1 px-4">
               <div className="flex items-center gap-2 text-brand md:justify-end">
                 <Calendar className="w-4 h-4" />
-                <span className="text-sm font-bold tracking-wider uppercase">{exp.period}</span>
+                <span className="text-[10px] md:text-sm font-bold tracking-wider uppercase">{exp.period}</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground md:justify-end">
                 <Building2 className="w-4 h-4" />
-                <span className="font-medium">{exp.company}</span>
+                <span className="text-sm md:font-medium">{exp.company}</span>
               </div>
             </div>
 
@@ -77,8 +77,8 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-3">{exp.role}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <h3 className="text-lg md:text-xl font-bold mb-3">{exp.role}</h3>
+                <p className="text-sm md:text-muted-foreground mb-6 leading-relaxed">
                   {exp.description}
                 </p>
 
