@@ -50,7 +50,8 @@ f
 ## 📸 Preview
 
 <div align="center">
-  <img src="public/images/aldy-photos-bg.jpg" width="45%" alt="Hero Section" />
+<img src="public/images/korlantas.png" width="45%" alt="Projects Section" />
+<img src="public/images/qola.png" width="45%" alt="Projects Section" />
   <img src="public/images/satu_ck.png" width="45%" alt="Projects Section" />
 </div>
 
