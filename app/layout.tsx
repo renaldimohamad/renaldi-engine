@@ -20,6 +20,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://app.renaldi.fun"),
   title: "Renaldi Mohamad | Full-Stack Developer",
   description:
     "Full-stack developer with ~2 years of experience building production-grade applications including government systems for social media monitoring and infrastructure dashboards. Specialized in React, Vue.js, Node.js, NestJS, and scalable system architecture.",

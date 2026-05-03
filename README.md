@@ -1,4 +1,4 @@
-# 🚀 Modern Senior-Level Portfolio
+# 🚀 Modern Professional Portfolio
 
 ![Portfolio Banner](public/images/banner.png)
 
@@ -18,7 +18,7 @@
 
 ## 🌟 Overview
 
-Welcome to my professional portfolio! This project is a **production-grade, senior-level personal website** built with the latest technologies to showcase my journey, projects, and technical expertise. Designed with a focus on minimalism, performance, and premium user experience.
+Welcome to my professional portfolio! This project is a **production-grade personal website** built with the latest technologies to showcase my journey, projects, and technical expertise. Designed with a focus on minimalism, performance, and premium user experience.
 
 > [!NOTE]
 > This portfolio is built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**, featuring a fully responsive design and professional-grade animations.
