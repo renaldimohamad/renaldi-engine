@@ -19,23 +19,23 @@ export default function SectionWrapper({
   className,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("py-24 md:py-32 overflow-hidden", className)}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id={id} className={cn("py-20 md:py-32 overflow-hidden", className)}>
+      <div className="max-w-7xl mx-auto px-5 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16 md:mb-24 flex flex-col items-start gap-4"
+          className="mb-12 md:mb-24 flex flex-col items-start gap-3 md:gap-4"
         >
           <div className="flex items-center gap-2">
-            <div className="w-12 h-px bg-primary" />
-            <span className="text-primary font-bold tracking-widest text-xs uppercase">
+            <div className="w-8 md:w-12 h-px bg-primary" />
+            <span className="text-primary font-bold tracking-widest text-[10px] md:text-xs uppercase">
               {title}
             </span>
           </div>
           {subtitle && (
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-2xl leading-[1.1]">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-2xl leading-[1.2] md:leading-[1.1]">
               {subtitle}
             </h2>
           )}

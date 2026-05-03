@@ -67,7 +67,7 @@ export default function Hero() {
         setIsInsideHero(false);
         setIsMoving(false);
       }}
-      className="relative min-h-[100vh] flex items-center overflow-hidden pt-28 lg:pt-20 px-6 sm:px-12 md:px-24"
+      className="relative min-h-[100vh] flex items-center overflow-hidden pt-32 md:pt-20 px-5 sm:px-12 md:px-24"
     >
       {/* 🦋 Advanced Cursor System */}
       <CursorParticles
@@ -113,7 +113,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[0.9] mb-8 font-heading">
+            <h1 className="text-[2.75rem] sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[1] md:leading-[0.9] mb-8 font-heading">
               <span className="relative inline-block text-gradient-premium">
                 Architecting
                 <div className="absolute -inset-4 bg-brand/20 blur-3xl rounded-full -z-10 opacity-50" />
@@ -149,7 +149,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex items-center justify-center lg:justify-start gap-8 text-muted-foreground/60 pt-10"
+            className="flex items-center justify-center lg:justify-start gap-8 text-muted-foreground/60 pt-6 md:pt-10"
           >
             <Link href="https://github.com" className="hover:text-brand transition-all hover:scale-125 cursor-pointer"><Github className="w-6 h-6" /></Link>
             <Link href="https://linkedin.com" className="hover:text-brand transition-all hover:scale-125 cursor-pointer"><Linkedin className="w-6 h-6" /></Link>
@@ -169,7 +169,7 @@ export default function Hero() {
       </div>
 
       {/* 🖱️ Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50 hidden md:flex">
         <span className="text-[10px] font-black uppercase tracking-[0.3em]">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -199,6 +199,7 @@ function CursorParticles({ x, y, isHovered, isMoving, rotation, isInsideHero }: 
       initial={{ opacity: 0 }}
       animate={{ opacity: isInsideHero ? 1 : 0 }}
       transition={{ duration: 0.4 }}
+      className="hidden md:block" // Hide on mobile/touch devices
     >
       <MainGlow x={glowSpringX} y={glowSpringY} isHovered={isHovered} />
 

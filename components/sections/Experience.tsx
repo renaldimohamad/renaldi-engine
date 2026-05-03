@@ -70,7 +70,7 @@ export default function Experience() {
 
             {/* Content Column */}
             <div className="md:w-1/2">
-              <div className="p-6 md:p-8 rounded-3xl border bg-card hover:border-brand/30 hover:shadow-[0_0_30px_hsl(var(--brand)/0.05)] transition-all group">
+              <div className="p-5 md:p-8 rounded-2xl md:rounded-3xl border bg-card hover:border-brand/30 hover:shadow-[0_0_30px_hsl(var(--brand)/0.05)] transition-all group">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand mb-4">
                     <Briefcase className="w-6 h-6" />

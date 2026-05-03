@@ -69,7 +69,7 @@ export default function About() {
           {focuses.map((focus, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl border bg-card hover:bg-card/80 hover:border-brand/30 hover:shadow-[0_0_20px_hsl(var(--brand)/0.05)] transition-all group cursor-pointer"
+              className="p-5 md:p-6 rounded-2xl border bg-card hover:bg-card/80 hover:border-brand/30 hover:shadow-[0_0_20px_hsl(var(--brand)/0.05)] transition-all group cursor-pointer"
             >
               <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center mb-4 text-brand group-hover:bg-brand group-hover:text-brand-foreground transition-colors">
                 {focus.icon}
