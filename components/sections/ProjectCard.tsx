@@ -7,6 +7,8 @@ import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useLanguage } from "@/lib/i18n";
+
 interface ProjectCardProps {
   title: string;
   subtitle: string;
@@ -21,6 +23,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: { project: ProjectCardProps }) {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -60,7 +64,7 @@ export default function ProjectCard({ project }: { project: ProjectCardProps }) 
           </div>
 
           <div className="space-y-4 pt-4">
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40">Results & Impact</h4>
+            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40">{t("projects.impact")}</h4>
             <ul className="grid grid-cols-1 gap-4">
               {project.impact.map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-sm font-medium text-foreground/70">
@@ -73,7 +77,7 @@ export default function ProjectCard({ project }: { project: ProjectCardProps }) 
         </div>
 
         <div className="flex flex-wrap gap-6 pt-6">
-          <Button size="lg" className="h-12 md:h-14 px-8 md:px-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-2xl shadow-primary/30 group/btn overflow-hidden relative cursor-pointer w-full sm:w-auto" asChild>
+          <Button size="lg" className="h-11 md:h-14 px-6 md:px-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base font-bold shadow-2xl shadow-primary/30 group/btn overflow-hidden relative cursor-pointer w-full sm:w-auto" asChild>
             <Link
               href={project.links.live || "#"}
               target="_blank"
@@ -81,14 +85,14 @@ export default function ProjectCard({ project }: { project: ProjectCardProps }) 
               className="after:absolute after:inset-0 after:z-10"
             >
               <span className="relative z-10 flex items-center gap-2">
-                View Live Case <ExternalLink className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                {t("projects.viewLive")} <ExternalLink className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
               </span>
             </Link>
           </Button>
           {project.links.github && project.links.github !== "#" && (
-            <Button size="lg" variant="outline" className="h-12 md:h-14 px-6 md:px-8 rounded-full border-white/10 hover:bg-white/5 backdrop-blur-sm relative z-30 font-bold cursor-pointer w-full sm:w-auto" asChild>
+            <Button size="lg" variant="outline" className="h-11 md:h-14 px-6 md:px-8 rounded-full border-white/10 hover:bg-white/5 backdrop-blur-sm relative z-30 text-sm md:text-base font-bold cursor-pointer w-full sm:w-auto" asChild>
               <Link href={project.links.github} target="_blank" rel="noopener noreferrer">
-                <Github className="w-5 h-5 mr-2" /> Code
+                <Github className="w-5 h-5 mr-2" /> {t("projects.code")}
               </Link>
             </Button>
           )}

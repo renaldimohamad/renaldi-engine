@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/app/providers";
+import Providers from "@/app/providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -58,11 +58,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased overflow-x-hidden">
-        <ThemeProvider>
+        <Providers>
           <Header />
           <main>{children}</main>
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

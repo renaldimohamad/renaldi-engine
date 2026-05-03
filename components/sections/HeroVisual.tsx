@@ -4,7 +4,10 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Code2, Cpu, Globe, Zap } from "lucide-react";
 
+import { useLanguage } from "@/lib/i18n";
+
 export default function HeroVisual() {
+  const { t } = useLanguage();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -55,7 +58,7 @@ export default function HeroVisual() {
               <div className="pl-4">name: &quot;Renaldi&quot;,</div>
               <div className="pl-4">role: &quot;Fullstack&quot;,</div>
               <div className="pl-4">impact: [&quot;High&quot;, &quot;Scalable&quot;],</div>
-              <div className="pl-4">status: &quot;Ready&quot;</div>
+              <div className="pl-4">status: &quot;{t("hero.badge").split(' ')[0]}&quot;</div>
               <div className="text-primary">{"}"};</div>
               <div className="pt-4 border-t border-border mt-4">
                 <div className="flex items-center justify-between">
@@ -76,7 +79,7 @@ export default function HeroVisual() {
             <Cpu className="w-6 h-6" />
           </div>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Backend</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{t("skills.categories.backend")}</div>
             <div className="text-xs font-bold">99.9% Uptime</div>
           </div>
         </motion.div>

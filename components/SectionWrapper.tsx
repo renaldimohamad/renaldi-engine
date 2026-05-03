@@ -22,10 +22,10 @@ export default function SectionWrapper({
     <section id={id} className={cn("py-20 md:py-32 overflow-hidden", className)}>
       <div className="max-w-7xl mx-auto px-5 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 md:mb-24 flex flex-col items-start gap-3 md:gap-4"
         >
           <div className="flex items-center gap-2">
@@ -42,10 +42,10 @@ export default function SectionWrapper({
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
           {children}
         </motion.div>

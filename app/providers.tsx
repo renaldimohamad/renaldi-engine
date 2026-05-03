@@ -1,23 +1,20 @@
 "use client";
 
 import { ReactNode, useEffect, useState, createContext } from "react";
+import { LanguageProvider } from "@/lib/i18n";
 
 export const ThemeContext = createContext<{
   isDarkMode: boolean;
   toggleTheme: () => void;
-}>({ isDarkMode: false, toggleTheme: () => {} });
+}>({ isDarkMode: false, toggleTheme: () => { } });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Get stored theme preference or system preference
     const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const isDark = storedTheme ? storedTheme === "dark" : prefersDark;
 
     setIsDarkMode(isDark);
@@ -45,5 +42,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
+  );
+}
+
+export default function Providers({ children }: { children: ReactNode }) {
+  return (
+    <LanguageProvider>
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }

@@ -7,8 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
@@ -35,13 +37,13 @@ export default function Contact() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.error || t("contact.form.error"));
       }
 
-      setStatus({ type: 'success', message: 'Message sent successfully! Check your inbox. 👋' });
+      setStatus({ type: 'success', message: t("contact.form.success") });
       (e.target as HTMLFormElement).reset();
     } catch (err: any) {
-      setStatus({ type: 'error', message: err.message || 'Something went wrong. Please try again.' });
+      setStatus({ type: 'error', message: err.message || t("contact.form.error") });
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setStatus(null), 5000);
@@ -49,25 +51,23 @@ export default function Contact() {
   };
 
   const socials = [
-    { icon: <Github className="w-5 h-5" />, label: "GitHub", href: "https://github.com/renaldimohamad", value: "github.com/renaldimohamad" },
-    { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://linkedin.com/in/renaldimohamad", value: "linkedin.com/in/renaldimohamad" },
-    { icon: <Mail className="w-5 h-5" />, label: "Email", href: "mailto:hello@renaldi.me", value: "hello@renaldi.me" }
+    { icon: <Github className="w-5 h-5" />, label: t("nav.contact") === "Kontak" ? "GitHub" : "GitHub", href: "https://github.com/renaldimohamad", value: "github.com/renaldimohamad" },
+    { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://www.linkedin.com/in/renaldimohamad/", value: "linkedin.com/renaldimohamad" },
+    { icon: <Mail className="w-5 h-5" />, label: "Email", href: "mailto:renaldimohamad77@gmail.com", value: "renaldimohamad77@gmail.com" }
   ];
 
   return (
     <SectionWrapper
       id="contact"
-      title="Contact"
-      subtitle="Let's build something exceptional together."
+      title={t("contact.title")}
+      subtitle={t("contact.subtitle")}
     >
       <div className="grid lg:grid-cols-2 gap-16">
         <div className="space-y-8">
           <div>
-            <h3 className="text-xl md:text-2xl font-bold mb-4">Get in touch</h3>
+            <h3 className="text-xl md:text-2xl font-bold mb-4">{t("contact.getInTouch")}</h3>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-              I&apos;m currently open to new opportunities and collaborations.
-              Whether you have a specific project in mind or just want to chat
-              about tech, feel free to reach out.
+              {t("contact.description")}
             </p>
           </div>
 
@@ -76,6 +76,8 @@ export default function Contact() {
               <Link
                 key={i}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-2xl border bg-card hover:bg-card/80 hover:border-brand/30 hover:shadow-[0_0_20px_hsl(var(--brand)/0.05)] transition-all group"
               >
                 <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-brand-foreground transition-colors">
@@ -109,53 +111,52 @@ export default function Contact() {
           </AnimatePresence>
 
           <form onSubmit={handleSubmit} className="space-y-6 pt-8">
-            {/* Honeypot Field (Spam prevention) */}
             <input type="text" name="confirm_email" className="hidden" tabIndex={-1} autoComplete="off" />
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Name</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t("contact.form.name")}</label>
                 <input
                   type="text"
                   name="name"
                   className="w-full px-4 py-3 rounded-xl border bg-background focus:ring-2 focus:ring-brand/50 focus:border-brand/50 outline-none transition-all"
-                  placeholder="Your name"
+                  placeholder={t("contact.form.namePlaceholder")}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t("contact.form.email")}</label>
                 <input
                   type="email"
                   name="email"
                   className="w-full px-4 py-3 rounded-xl border bg-background focus:ring-2 focus:ring-brand/50 focus:border-brand/50 outline-none transition-all"
-                  placeholder="name@email.com"
+                  placeholder={t("contact.form.emailPlaceholder")}
                   required
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Message</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t("contact.form.message")}</label>
               <textarea
                 rows={4}
                 name="message"
                 className="w-full px-4 py-3 rounded-xl border bg-background focus:ring-2 focus:ring-brand/50 focus:border-brand/50 outline-none transition-all resize-none"
-                placeholder="How can I help?"
+                placeholder={t("contact.form.messagePlaceholder")}
                 required
               />
             </div>
             <Button
               size="lg"
-              className="w-full gap-2 py-6 rounded-xl text-md"
+              className="w-full gap-2 h-11 md:h-14 rounded-xl text-sm md:text-base font-bold"
               type="submit"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                  Sending...
+                  {t("contact.form.sending")}
                 </div>
               ) : (
-                <>Send Message <Send className="w-4 h-4" /></>
+                <>{t("contact.form.send")} <Send className="w-4 h-4" /></>
               )}
             </Button>
           </form>

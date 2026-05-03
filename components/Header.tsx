@@ -3,13 +3,15 @@
 import { useContext, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeContext } from "@/app/providers";
+import { useLanguage, Language } from "@/lib/i18n";
 import Link from "next/link";
-import { Moon, Sun, Menu, X, ArrowUpRight } from "lucide-react";
+import { Moon, Sun, Menu, X, ArrowUpRight, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -26,10 +28,10 @@ export default function Header() {
   if (!isMounted) return null;
 
   const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.experience"), href: "#experience" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.skills"), href: "#skills" },
   ];
 
   return (
@@ -65,6 +67,19 @@ export default function Header() {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
+            {/* Language Switcher */}
+            <div className="flex items-center mr-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLanguage(language === "en" ? "id" : "en")}
+                className="rounded-full px-3 h-8 text-[10px] font-bold uppercase tracking-widest gap-2"
+              >
+                <Globe className="w-3 h-3" />
+                {language}
+              </Button>
+            </div>
+
             <Button
               variant="ghost"
               size="icon"
@@ -76,7 +91,7 @@ export default function Header() {
 
             <Button variant="premium" size="sm" className="hidden sm:flex rounded-full gap-1 group" asChild>
               <Link href="#contact">
-                Work <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                {t("nav.work")} <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </Button>
 
@@ -107,7 +122,7 @@ export default function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-3xl sm:text-4xl font-bold tracking-tight hover:text-brand transition-colors"
+                  className="text-xl sm:text-2xl font-bold tracking-tight hover:text-brand transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -115,10 +130,28 @@ export default function Header() {
               <Link
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-3xl sm:text-4xl font-bold tracking-tight text-brand"
+                className="text-xl sm:text-2xl font-bold tracking-tight text-brand"
               >
-                Contact
+                {t("nav.contact")}
               </Link>
+
+              {/* Mobile Language Switch */}
+              <div className="pt-10 border-t mt-4 flex items-center gap-4">
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Select Language</span>
+                <div className="flex gap-2">
+                  {(["en", "id"] as Language[]).map((lang) => (
+                    <Button
+                      key={lang}
+                      variant={language === lang ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setLanguage(lang)}
+                      className="rounded-full px-4 uppercase text-[10px] font-bold"
+                    >
+                      {lang}
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </nav>
           </motion.div>
         )}
