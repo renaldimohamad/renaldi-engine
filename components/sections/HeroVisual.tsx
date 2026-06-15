@@ -32,13 +32,13 @@ export default function HeroVisual() {
 
   return (
     <div
-      className="relative w-full h-[500px] hidden lg:flex items-center justify-center perspective-1000"
+      className="relative w-full h-[350px] md:h-[500px] flex items-center justify-center perspective-[1000px] max-w-full min-w-0 shrink"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
         style={{ rotateX, rotateY }}
-        className="relative w-full max-w-lg aspect-square"
+        className="relative w-[80%] max-w-[260px] sm:max-w-[320px] md:max-w-md lg:max-w-lg aspect-square shrink min-w-0"
       >
         {/* Main Central Card */}
         <motion.div
@@ -53,7 +53,7 @@ export default function HeroVisual() {
               <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
               <div className="w-3 h-3 rounded-full bg-green-500/50" />
             </div>
-            <div className="flex-1 space-y-4 font-mono text-sm overflow-hidden">
+            <div className="flex-1 space-y-4 font-mono text-[10px] sm:text-xs md:text-sm overflow-hidden">
               <div className="text-primary">const engineer = {"{"}</div>
               <div className="pl-4">name: &quot;Renaldi&quot;,</div>
               <div className="pl-4">role: &quot;Fullstack&quot;,</div>
@@ -75,12 +75,12 @@ export default function HeroVisual() {
           style={{ x: useTransform(mouseXSpring, [-300, 300], [-30, 30]), y: useTransform(mouseYSpring, [-300, 300], [-30, 30]) }}
           className="absolute -top-10 -right-10 p-4 bg-background border border-border rounded-2xl shadow-xl flex items-center gap-3 glass"
         >
-          <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-            <Cpu className="w-6 h-6" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+            <Cpu className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{t("skills.categories.backend")}</div>
-            <div className="text-xs font-bold">99.9% Uptime</div>
+            <div className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{t("skills.categories.backend")}</div>
+            <div className="text-[10px] sm:text-xs font-bold">99.9% Uptime</div>
           </div>
         </motion.div>
 
@@ -89,12 +89,12 @@ export default function HeroVisual() {
           style={{ x: useTransform(mouseXSpring, [-300, 300], [40, -40]), y: useTransform(mouseYSpring, [-300, 300], [20, -20]) }}
           className="absolute -bottom-12 -left-12 p-4 bg-background border border-border rounded-2xl shadow-xl flex items-center gap-3 glass"
         >
-          <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-            <Globe className="w-6 h-6" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+            <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Global</div>
-            <div className="text-xs font-bold">Edge Scalability</div>
+            <div className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Global</div>
+            <div className="text-[10px] sm:text-xs font-bold">Edge Scalability</div>
           </div>
         </motion.div>
 

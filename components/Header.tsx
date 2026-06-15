@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Moon, Sun, Menu, X, ArrowUpRight, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function Header() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
@@ -46,10 +47,20 @@ export default function Header() {
         )}>
           {/* Logo */}
           <Link href="/" className="text-base sm:text-xl font-bold tracking-tighter flex items-center gap-1.5 group shrink-0">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-foreground flex items-center justify-center text-background group-hover:rotate-12 transition-transform text-xs sm:text-sm">
+            {/* <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-foreground flex items-center justify-center text-background group-hover:rotate-12 transition-transform text-xs sm:text-sm">
               R
+            </div> */}
+            {/* <span className="inline-block">Renaldi.</span> */}
+
+            <div className="relative w-12 h-12 grayscale-[0.5] hover:grayscale-0 transition-all duration-500">
+              <Image
+                src="/images/profile_aldi_2.jpg"
+                alt="Renaldi Mohamad"
+                fill
+                className="rounded-full object-cover ring-1 ring-neutral-200 dark:ring-neutral-800"
+                priority
+              />
             </div>
-            <span className="inline-block">Renaldi.</span>
           </Link>
 
           {/* Desktop Navigation */}

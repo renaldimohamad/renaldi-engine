@@ -96,7 +96,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center py-12 lg:py-0">
         {/* 📝 Left Side: Headline Content */}
-        <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
+        <div className="mt-20 space-y-6 lg:space-y-8 text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
