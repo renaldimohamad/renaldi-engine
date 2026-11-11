@@ -11,13 +11,7 @@ interface SectionProps {
   className?: string;
 }
 
-export default function SectionWrapper({
-  id,
-  title,
-  subtitle,
-  children,
-  className,
-}: SectionProps) {
+export default function SectionWrapper({ id, title, subtitle, children, className }: SectionProps) {
   return (
     <section id={id} className={cn("py-20 md:py-32 overflow-hidden", className)}>
       <div className="max-w-7xl mx-auto px-5 md:px-12">
@@ -26,8 +20,7 @@ export default function SectionWrapper({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12 md:mb-24 flex flex-col items-start gap-3 md:gap-4"
-        >
+          className="mb-12 md:mb-24 flex flex-col items-start gap-3 md:gap-4">
           <div className="flex items-center gap-2">
             <div className="w-8 md:w-12 h-px bg-primary" />
             <span className="text-primary font-bold tracking-widest text-[10px] md:text-xs uppercase">
@@ -45,8 +38,7 @@ export default function SectionWrapper({
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        >
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}>
           {children}
         </motion.div>
       </div>

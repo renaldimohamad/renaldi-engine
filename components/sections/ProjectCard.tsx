@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { useId, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
@@ -9,8 +10,9 @@ import Image from "next/image";
 
 import { useLanguage } from "@/lib/i18n";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   title: string;
+  role?: string;
   subtitle: string;
   description: string;
   tech: string[];
@@ -22,106 +24,145 @@ interface ProjectCardProps {
   impact: string[];
 }
 
-export default function ProjectCard({ project }: { project: ProjectCardProps }) {
+interface ProjectCardComponentProps {
+  project: ProjectCardProps;
+  featured?: boolean;
+}
+
+function isAvailableLink(url?: string) {
+  return Boolean(url && url !== "#");
+}
+
+export default function ProjectCard({ project, featured = false }: ProjectCardComponentProps) {
   const { t } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
+  const [isTechExpanded, setIsTechExpanded] = useState(false);
+  const techListId = useId();
+  const liveUrl = isAvailableLink(project.links.live) ? project.links.live : undefined;
+  const githubUrl = isAvailableLink(project.links.github) ? project.links.github : undefined;
+  const visibleTech = project.tech.slice(0, 5);
+  const remainingTech = project.tech.length - visibleTech.length;
+  const displayedTech = isTechExpanded ? project.tech : visibleTech;
+
+  const imagePreview = (
+    <Image
+      src={project.image}
+      alt={`${project.title} project preview`}
+      fill
+      className="object-contain transition-transform duration-300 motion-reduce:transition-none"
+      sizes="(max-width: 1023px) 100vw, 50vw"
+    />
+  );
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] glass-card glow-border overflow-hidden cursor-pointer"
-    >
-      {/* Background Decorative Glow */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-brand/10 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-
-      <div className="space-y-6 md:space-y-8 order-2 lg:order-1 relative z-20">
+    <motion.article
+      layout={!shouldReduceMotion}
+      whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="group grid items-center gap-8 overflow-hidden rounded-2xl border border-border/80 bg-card/30 p-5 sm:p-7 lg:grid-cols-2 lg:gap-12 lg:p-9">
+      <div className="order-2 flex min-w-0 flex-col gap-6 lg:order-1">
         <div className="space-y-3">
-          <Link
-            href={project.links.live || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-          >
-            <h3 className="text-xl sm:text-2xl md:text-4xl font-black tracking-tighter group-hover:text-brand transition-colors duration-500">{project.title}</h3>
-          </Link>
-          <div className="flex items-center gap-3">
-            <div className="h-px w-8 bg-brand/50" />
-            <p className="text-sm md:text-lg font-semibold text-brand/80 uppercase tracking-widest">{project.subtitle}</p>
-          </div>
-        </div>
-
-        <p className="text-muted-foreground/80 text-sm md:text-base leading-relaxed max-w-xl">
-          {project.description}
-        </p>
-
-        <div className="space-y-6">
-          <div className="flex flex-wrap gap-3">
-            {project.tech.map((t) => (
-              <Badge key={t} variant="secondary" className="px-4 py-1.5 rounded-full bg-brand/5 border-brand/10 text-muted-foreground/80 font-medium">{t}</Badge>
-            ))}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            {featured && <span className="text-brand">{t("projects.featured")}</span>}
+            {featured && <span aria-hidden="true" className="h-px w-5 bg-border" />}
+            <span>{project.role || project.subtitle}</span>
           </div>
 
-          <div className="space-y-4 pt-4">
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40">{t("projects.impact")}</h4>
-            <ul className="grid grid-cols-1 gap-4">
-              {project.impact.map((item, i) => (
-                <li key={i} className="flex items-center gap-4 text-sm font-medium text-foreground/70">
-                  <div className="w-2 h-2 rounded-full bg-brand shadow-[0_0_10px_hsl(var(--brand))]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-6 pt-6">
-          <Button size="lg" className="h-11 md:h-14 px-6 md:px-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base font-bold shadow-2xl shadow-primary/30 group/btn overflow-hidden relative cursor-pointer w-full sm:w-auto" asChild>
+          {liveUrl ? (
             <Link
-              href={project.links.live || "#"}
+              href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="after:absolute after:inset-0 after:z-10"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                {t("projects.viewLive")} <ExternalLink className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-              </span>
+              className="inline-flex items-center gap-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4">
+              <h3 className="text-2xl font-semibold tracking-tight transition-colors duration-200 group-hover:text-brand sm:text-3xl">
+                {project.title}
+              </h3>
+              <ExternalLink aria-hidden="true" className="h-4 w-4 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-          </Button>
-          {project.links.github && project.links.github !== "#" && (
-            <Button size="lg" variant="outline" className="h-11 md:h-14 px-6 md:px-8 rounded-full border-white/10 hover:bg-white/5 backdrop-blur-sm relative z-30 text-sm md:text-base font-bold cursor-pointer w-full sm:w-auto" asChild>
-              <Link href={project.links.github} target="_blank" rel="noopener noreferrer">
-                <Github className="w-5 h-5 mr-2" /> {t("projects.code")}
-              </Link>
-            </Button>
+          ) : (
+            <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{project.title}</h3>
           )}
         </div>
+
+        <p className="max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">{project.description}</p>
+
+        <div className="space-y-4">
+          <ul className="space-y-2.5" aria-label={t("projects.impact")}>
+            {project.impact.map((item, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm leading-6 text-foreground/80">
+                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="border-t border-border/70 pt-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <motion.div id={techListId} layout={!shouldReduceMotion} className="contents">
+                {displayedTech.map((technology) => (
+                  <Badge
+                    key={technology}
+                    variant="outline"
+                    className="rounded-md border-border/80 bg-transparent px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                    {technology}
+                  </Badge>
+                ))}
+              </motion.div>
+              {remainingTech > 0 && (
+                <button
+                  type="button"
+                  aria-expanded={isTechExpanded}
+                  aria-controls={techListId}
+                  onClick={() => setIsTechExpanded((expanded) => !expanded)}
+                  className="min-h-8 rounded-md border border-border/80 bg-transparent px-2.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                  {isTechExpanded ? t("projects.showLess") : `+${remainingTech} ${t("projects.showMore")}`}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {(liveUrl || githubUrl) && (
+          <div className="flex flex-wrap gap-3 pt-1">
+            {liveUrl && (
+              <Button
+                size="lg"
+                className="h-11 rounded-full px-5 text-sm font-semibold shadow-none"
+                asChild>
+                <Link href={liveUrl} target="_blank" rel="noopener noreferrer">
+                  {t("projects.viewLive")} <ExternalLink aria-hidden="true" className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+            {githubUrl && (
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-11 rounded-full border-border/80 bg-transparent px-5 text-sm font-semibold shadow-none"
+                asChild>
+                <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Github aria-hidden="true" className="mr-2 h-4 w-4" /> {t("projects.code")}
+                </Link>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
 
-      <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl order-1 lg:order-2 group-hover:scale-[1.03] transition-transform duration-700 ease-out z-20 bg-muted/5">
-        <Link href={project.links.live || "#"} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-contain transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--brand)/0.2),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-10" />
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10">
-            <h4 className="text-4xl md:text-6xl font-black text-white/10 group-hover:text-brand/20 transition-all duration-1000 uppercase tracking-tighter italic">
-              {project.title}
-            </h4>
-          </div>
-
-          <div className="absolute bottom-8 right-8 bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 z-20 shadow-2xl">
-            <ExternalLink className="w-8 h-8" />
-          </div>
-        </Link>
+      <div className="relative order-1 aspect-video overflow-hidden rounded-xl border border-border/80 bg-muted/20 lg:order-2">
+        {liveUrl ? (
+          <Link
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} live project`}
+            className="absolute inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset">
+            {imagePreview}
+          </Link>
+        ) : (
+          imagePreview
+        )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
